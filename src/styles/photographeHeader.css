@@ -1,0 +1,40 @@
+.photographer-header {
+  width: 100%;
+  background-color: #fafafa;
+  border-radius: 5px;
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 43px;
+}
+
+.photographer-presentation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.photographer-presentation h1 {
+  font-size: 64px;
+  font-weight: 400;
+  color: #d3573c;
+}
+
+.photographer-presentation .localisation {
+  font-size: 24px;
+  font-weight: 400;
+  color: #901c1c;
+}
+
+.photographer-presentation .citation {
+  font-size: 18px;
+  font-weight: 400;
+  color: #525252;
+}
+
+.profile-img {
+  border-radius: 50%;
+  object-fit: cover;
+}
