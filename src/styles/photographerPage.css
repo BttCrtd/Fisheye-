@@ -58,6 +58,31 @@
   gap: 20px;
 }
 
+.filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+}
+
+#filter {
+  height: 69px;
+  width: 170px;
+  background-color: #901c1c;
+  border-radius: 5px;
+  border: none;
+  padding: 23px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
 .cta {
   position: fixed;
   display: flex;

@@ -17,6 +17,9 @@ export default async function Page({ params }) {
       <main className="main">
          <PhotographerHeader photographer={photographer} />
          <section className="photo-video-galerie">
+          <div className="filter">
+            <label htmlFor="filter">Trier par</label>
+          </div>
           <div className="gallerie">
             {medias.map((media) => (
               <PhotoCard
