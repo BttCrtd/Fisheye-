@@ -1,29 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import "@/styles/card.css";
+import { getPhotographer } from "../../app/lib/prisma-db";
 
-export default function Card({
-  name = "Paul",
-  localisation = "Paris",
-  citation = "Photo of the day",
-  prix = "100 €/jour",
-}) {
+export default async function Card({ id }) {
+  const photographer = await getPhotographer(id);
   return (
     <article className="profile-card">
-      <Link href="/photographer" className="name-and-img-container">
+      <Link href={`/photographer/${photographer.id}`} className="name-and-img-container">
         <Image
-          src="/assets/TracyGalindo.jpg"
+          src={`/assets/${photographer.portrait}`}
           width={200}
           height={200}
           alt={``}
           className="profile-img"
         />
-        <h2>{name}</h2>
+        <h2>{photographer.name}</h2>
       </Link>
       <div className="info">
-        <p className="localisation">{localisation}</p>
-        <p className="citation">{citation}</p>
-        <p className="prix">{prix}</p>
+        <p className="localisation">{photographer.city}, {photographer.country}</p>
+        <p className="citation">{photographer.tagline}</p>
+        <p className="prix">{photographer.price}€/jour</p>
       </div>
     </article>
   );

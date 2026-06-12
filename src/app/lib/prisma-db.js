@@ -1,4 +1,4 @@
-const { PrismaClient } = require('../generated/prisma/client');
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -6,16 +6,16 @@ export const getAllPhotographers = () => prisma.photographer.findMany();
 
 export const getPhotographer = (id) =>
   prisma.photographer.findUnique({
-    where: { id },
+     where: { id: Number(id) },
   });
 
 export const getAllMediasForPhotographer = (photographerId) =>
   prisma.media.findMany({
-    where: { photographerId },
+    where: { photographerId: Number(photographerId) },
   });
 
 export const updateNumberOfLikes = (mediaId, newNumberOfLikes) =>
   prisma.media.update({
-    where: { id: mediaId },
+     where: { id: Number(mediaId) },
     data: { likes: newNumberOfLikes },
   });
