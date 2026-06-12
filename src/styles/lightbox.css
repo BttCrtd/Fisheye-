@@ -1,0 +1,76 @@
+.lightbox-modal {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 0;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+}
+
+.lightbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 0;
+  height: 90%;
+  width: fit-content;
+}
+
+.photo-and-title {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.btn-container {
+  position: relative;
+  height: 90%;
+  display: flex;
+  align-items: center;
+}
+.photo-and-title p {
+  font-size: 24px;
+  font-weight: 400;
+  color: #901c1c;
+  width: auto;
+  height: 30px;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  aspect-ratio: 7 / 6;
+  object-fit: cover;
+}
+
+.next,
+.prev {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-icon {
+  color: #901c1c;
+}
+
+.close-lightbox-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #901c1c;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
