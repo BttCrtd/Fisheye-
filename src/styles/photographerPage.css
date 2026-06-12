@@ -30,3 +30,30 @@
   gap: 20px;
   background-color: var(--foreground);
 }
+
+.gallerie {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 83px;
+  column-gap: 20px;
+}
+
+.gallerie > :nth-child(3n + 1) {
+  justify-self: start;
+}
+
+.gallerie > :nth-child(3n + 2) {
+  justify-self: center;
+}
+
+.gallerie > :nth-child(3n + 3) {
+  justify-self: end;
+}
+
+.photo-video-galerie {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}

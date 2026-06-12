@@ -1,0 +1,53 @@
+article {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pictur {
+  width: 100%;
+  aspect-ratio: 7 / 6;
+  object-fit: cover;
+  display: block;
+  border-radius: 5px;
+  object-position: top;
+}
+
+.title-and-like {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.title-and-like p {
+  font-size: 24px;
+  font-weight: 400;
+  color: #901c1c;
+  margin: 0;
+  flex: 1;
+  word-break: break-word;
+  height: auto;
+  min-width: 0;
+}
+
+.like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3px;
+}
+
+.counter {
+  font-size: 24px;
+  font-weight: 500;
+  color: #901c1c;
+}
+
+.heart-icon {
+  color: #901c1c;
+  font-size: 18px;
+  cursor: pointer;
+}
