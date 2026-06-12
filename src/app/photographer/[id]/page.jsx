@@ -10,6 +10,13 @@ export default async function Page({ params }) {
   const photographer = await getPhotographer(id);
   const medias = await getAllMediasForPhotographer(id);
 
+  const mediaList = medias.map((media) => ({
+    id: media.id,
+    title: media.title,
+    image: media.image,
+    video: media.video,
+  }));
+
   const totalLikes = medias.reduce((count, media) => count + media.likes, 0);
   return (
     <div className="page">
@@ -21,13 +28,15 @@ export default async function Page({ params }) {
             <label htmlFor="filter">Trier par</label>
           </div>
           <div className="gallerie">
-            {medias.map((media) => (
+            {medias.map((media, index) => (
               <PhotoCard
                 key={media.id}
                 title={media.title}
                 image={media.image}
                 video={media.video}
                 likes={media.likes}
+                mediaList={mediaList}
+                currentIndex={index}              
               />
             ))}
           </div>

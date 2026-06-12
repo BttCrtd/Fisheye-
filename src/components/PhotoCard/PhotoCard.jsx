@@ -6,7 +6,7 @@ import { FaHeart } from "react-icons/fa";
 import LightboxModal from "@/components/LightboxModal/LightboxModal";
 import {useState} from "react";
 
-export default function PhotoCard({ title, image, video, likes }) {
+export default function PhotoCard({ title, image, video, likes, mediaList, currentIndex, }) {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
     if (!isOpen) {
@@ -39,7 +39,7 @@ export default function PhotoCard({ title, image, video, likes }) {
         </div>
       </div>
       {isOpen ? (
-        <LightboxModal title={title} image={image} close={openModal} />
+        <LightboxModal mediaList={mediaList} initialIndex={currentIndex} close={openModal} />
       ) : null}
     </article>
   );
