@@ -2,8 +2,9 @@ import "@/styles/photographerPage.css";
 import { getPhotographer, getAllMediasForPhotographer, } from "@/app/lib/prisma-db";
 import Header from "@/components/Header/Header";
 import PhotographerHeader from "@/components/PhotographerHeader/PhotographerHeader";
-import PhotoCard from "@/components/PhotoCard/PhotoCard";
+
 import { FaHeart } from "react-icons/fa";
+import Gallery from "@/components/Gallery/Gallery";
 
 export default async function Page({ params }) {
   const { id } = await params;
@@ -23,31 +24,18 @@ export default async function Page({ params }) {
       <Header />
       <main className="main">
          <PhotographerHeader photographer={photographer} />
-         <section className="photo-video-galerie">
-          <div className="filter">
-            <label htmlFor="filter">Trier par</label>
-          </div>
-          <div className="gallerie">
-            {medias.map((media, index) => (
-              <PhotoCard
-                key={media.id}
-                title={media.title}
-                image={media.image}
-                video={media.video}
-                likes={media.likes}
-                mediaList={mediaList}
-                currentIndex={index}              
-              />
-            ))}
-          </div>
-        </section>
-         <div className="cta">
+         <div className="cta" tabIndex={0}>
           <div className="like">
             <p className="counter">{totalLikes}</p>
-            <FaHeart className="heart-icon" />
+            <FaHeart className="heart-icon" aria-label="Likes" />
           </div>
           <p className="price">{photographer.price}€/jour</p>
         </div>
+         <section className="photo-video-galerie">
+          <Gallery
+            medias={medias}
+          />
+        </section>
       </main>
     </div>
   );

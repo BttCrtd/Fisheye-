@@ -1,5 +1,5 @@
 
-import styles from "./page.module.css";
+import styles from "../styles/page.module.css";
 import Header from "@/components/Header/Header";
 import Card from "@/components/Card/Card";
 import { getAllPhotographers } from "@/app/lib/prisma-db";

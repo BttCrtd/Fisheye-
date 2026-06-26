@@ -13,7 +13,9 @@ export default function Header({ title }) {
           alt="Fisheye Home page"
         />
       </Link>
-      <h1>{title}</h1>
+      {title && (
+        <h1 tabIndex={0}>{title}</h1>
+      )}
     </header>
   );
 }

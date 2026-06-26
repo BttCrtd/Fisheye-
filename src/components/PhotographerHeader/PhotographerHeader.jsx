@@ -20,23 +20,25 @@ export default function PhotographerHeader({ photographer }) {
   return (
     <section className="photographer-header">
       <div className="photographer-presentation">
-        <h1>{photographer.name}</h1>
+        <h1 tabIndex={0}>{photographer.name}</h1>
+        <div tabIndex={0}>
         <p className="localisation">
           {photographer.city}, {photographer.country}
         </p>
-        <p className="citation">{photographer.tagline}</p>
+        <p className="citation">{photographer.tagline}</p></div>
       </div>
-      <Button name="Contacter moi !" onClick={openModal}></Button>
+      <Button name="Contacter moi !" aria="Contact Me" onClick={openModal}></Button>
+      {isOpen ? (
+        <FormModal name={photographer.name} close={closeModal} />
+      ) : null}
       <Image
         src={`/assets/${photographer.portrait}`}
         width={200}
         height={200}
-        alt={`Photo de profil de ${photographer.name}`}
+        alt={``}
         className="profile-img"
+        tabIndex={0}
       />
-      {isOpen ? (
-        <FormModal name={photographer.name} close={closeModal} />
-      ) : null}
     </section>
   );
 }

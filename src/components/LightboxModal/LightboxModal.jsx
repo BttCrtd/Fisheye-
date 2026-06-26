@@ -4,7 +4,9 @@ import "@/styles/lightbox.css";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
-import {useState} from "react";
+import {useState, useEffect} from "react";
+
+
 
 export default function LightboxModal({ mediaList, initialIndex, close, }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
@@ -23,11 +25,29 @@ export default function LightboxModal({ mediaList, initialIndex, close, }) {
     );
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        prevMedia();
+      }
+
+      if (e.key === "ArrowRight") {
+        nextMedia();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mediaList.length, prevMedia, nextMedia]);
+
   return (
     <section className="lightbox-modal">
-      <div className="lightbox">
+      <div className="lightbox" tabIndex={0} aria-label="image closeup view">
         <div className="btn-container">
-          <button className="prev" onClick={prevMedia}>
+            <button className="prev" onClick={prevMedia} aria-label="Previous image">
             <FaChevronLeft className="nav-icon" size={30} />
           </button>
         </div>
@@ -39,23 +59,25 @@ export default function LightboxModal({ mediaList, initialIndex, close, }) {
               height={300}
               alt={`Photo ${currentMedia.title}`}
               className="picture"
+              tabIndex={0}
             />
           ) : (
             <video controls className="picture">
               <source
                 src={`/assets/${currentMedia.video}`}
                 type="video/mp4"
+                tabIndex={0}
               />
             </video>
           )}
-          <p>{currentMedia.title}</p>
+          <p tabIndex={0}>{currentMedia.title}</p>
         </div>
         <div className="btn-container">
-          <button className="next" onClick={nextMedia}>
+          <button className="next" onClick={nextMedia}  aria-label="Next image">
             <FaChevronRight className="nav-icon" size={30} />
           </button>
-          <button className="close-lightbox-btn">
-            <IoMdClose size={42} onClick={close} />
+          <button className="close-lightbox-btn" aria-label="Close dialog" onClick={close} >
+            <IoMdClose size={42} />
           </button>
         </div>
       </div>

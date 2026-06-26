@@ -6,32 +6,41 @@ export default function FormModal({ name, close }) {
   return (
     <section className="modal-container">
       <div className="background" onClick={close}></div>
-      <div className="modal">
-        <div className="modal-header">
+      <div className="modal" tabIndex={0}>
+        <div className="modal-header" tabIndex={0}>
           <h1>Contactez Moi {name}</h1>
-          <button onClick={close}>
-            <IoMdClose className="close-modal" size={64} />
-          </button>
+          
         </div>
         <form action="">
           <div className="form-input">
-            <label htmlFor="firstName">Prénom</label>
+            <label htmlFor="firstName" tabIndex={0}>
+              Prénom
+            </label>
             <input id="firstName" name="firstName" type="text" />
           </div>
           <div className="form-input">
-            <label htmlFor="lastName">Nom</label>
+            <label htmlFor="lastName" tabIndex={0}>
+              Nom
+            </label>
             <input id="lastName" name="lastName" type="text" />
           </div>
           <div className="form-input">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" tabIndex={0}>
+              Email
+            </label>
             <input id="email" name="email" type="text" />
           </div>
           <div className="form-input">
-            <label htmlFor="message">Votre Message</label>
+            <label htmlFor="message" tabIndex={0}>
+              Votre Message
+            </label>
             <textarea id="message" name="message" />
           </div>
           <Button name="Envoyer" />
         </form>
+        <button id="close-modal" onClick={close} >
+            <IoMdClose className="close-modal" size={64} />
+          </button>
       </div>
     </section>
   );
