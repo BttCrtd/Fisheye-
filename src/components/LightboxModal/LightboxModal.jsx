@@ -45,19 +45,15 @@ export default function LightboxModal({ mediaList, initialIndex, close, }) {
 
   return (
     <section className="lightbox-modal">
-      <div className="lightbox" tabIndex={0} aria-label="image closeup view">
-        <div className="btn-container">
-            <button className="prev" onClick={prevMedia} aria-label="Previous image">
-            <FaChevronLeft className="nav-icon" size={30} />
-          </button>
-        </div>
+      <div className="lightbox" tabIndex={0} aria-label="image vue rapprochée">
+        
         <div className="photo-and-title">
           {currentMedia.image ? (
             <Image
               src={`/assets/${currentMedia.image}`}
               width={350}
               height={300}
-              alt={`Photo ${currentMedia.title}`}
+              alt={`${currentMedia.title}`}
               className="picture"
               tabIndex={0}
             />
@@ -72,11 +68,17 @@ export default function LightboxModal({ mediaList, initialIndex, close, }) {
           )}
           <p tabIndex={0}>{currentMedia.title}</p>
         </div>
+
         <div className="btn-container">
+            
+            <button className="prev" onClick={prevMedia} aria-label="Previous image">
+            <FaChevronLeft className="nav-icon" size={30} />
+          </button>
+        
           <button className="next" onClick={nextMedia}  aria-label="Next image">
             <FaChevronRight className="nav-icon" size={30} />
           </button>
-          <button className="close-lightbox-btn" aria-label="Close dialog" onClick={close} >
+          <button className="close-lightbox-btn" aria-label="Fermer fenêtre de dialogue" onClick={close} >
             <IoMdClose size={42} />
           </button>
         </div>

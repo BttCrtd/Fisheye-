@@ -47,7 +47,7 @@ export default function PhotoCard({ title, image, video, likes, mediaList, curre
           src={`/assets/${image}`}
           width={350}
           height={300}
-          alt={`Photo ${title}`}
+          alt={`${title}, vue rapprochée`}
           className="pictur"
           onClick={openModal}
         />

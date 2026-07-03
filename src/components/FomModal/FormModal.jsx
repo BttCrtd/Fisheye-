@@ -38,7 +38,7 @@ export default function FormModal({ name, close }) {
           </div>
           <Button name="Envoyer" />
         </form>
-        <button id="close-modal" onClick={close} >
+        <button id="close-modal" onClick={close} aria-label="Fermer le formulaire de contact">
             <IoMdClose className="close-modal" size={64} />
           </button>
       </div>

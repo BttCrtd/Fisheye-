@@ -36,7 +36,7 @@ export default function Gallery({ medias }) {
   return (
     <>
       <div className="filter">
-        <label htmlFor="filter" aria-label="Trier par">
+        <label htmlFor="filter" aria-label={`Trier par ${sortBy === "popularity" ? "Popularité" : sortBy === "date" ? "Date" : "Titre"} `}>
           Trier par
         </label>
 
