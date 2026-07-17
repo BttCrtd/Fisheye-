@@ -45,7 +45,7 @@ export default function Gallery({ medias }) {
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
         >
-          <option value="popularity">Popularité</option>
+          <option  value="popularity">Popularité</option>
           <option value="date">Date</option>
           <option value="title">Titre</option>
         </select>

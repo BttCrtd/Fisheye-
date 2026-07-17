@@ -5,7 +5,7 @@ import "@/styles/photoCard.css";
 import { FaHeart } from "react-icons/fa";
 import LightboxModal from "@/components/LightboxModal/LightboxModal";
 import {useState} from "react";
-import { updateLikes } from "@/app/JavaScript/likes";
+import { updateLikes } from "@/app/hook/likes";
 import {useRouter} from "next/navigation";
 
 
@@ -40,7 +40,7 @@ export default function PhotoCard({ title, image, video, likes, mediaList, curre
   return (
     <article>
       
-      <button className="open-lightbox-btn" onClick={openModal}>
+      <button className="open-lightbox-btn" onClick={openModal} aria-label={`${title}, vue rapprochée`}>
        
       {image ? (
         <Image
@@ -49,10 +49,10 @@ export default function PhotoCard({ title, image, video, likes, mediaList, curre
           height={300}
           alt={`${title}, vue rapprochée`}
           className="pictur"
-          onClick={openModal}
+          
         />
       ) : (
-        <video className="pictur" onClick={openModal} aria-label={`Vidéo ${title}`}>
+        <video className="pictur" aria-label={`Vidéo ${title}`}>
           <source src={`/assets/${video}`} type="video/mp4" />
         </video>
       )}
@@ -60,11 +60,15 @@ export default function PhotoCard({ title, image, video, likes, mediaList, curre
       {isOpen ? (
         <LightboxModal mediaList={mediaList} initialIndex={currentIndex} close={openModal} />
       ) : null}
-      <div className="title-and-like">
+      <div className="title-and-like" onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleLike();
+          }
+        }}>
         <p tabIndex={0}>{title}</p>
         <div className="like" tabIndex={0}>
           <p className="counter">{like}</p>
-          <FaHeart className="heart-icon" onClick={handleLike} aria-label="like"/>
+          <FaHeart className="heart-icon" aria-label="like" onClick={handleLike}/>
         </div>
       </div>
     </article>

@@ -3,6 +3,15 @@ import { IoMdClose } from "react-icons/io";
 import Button from "../Button/Button";
 
 export default function FormModal({ name, close }) {
+    const handleSubmit = (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+
+      const data = Object.fromEntries(formData.entries());
+
+      console.log(data);
+    };
   return (
     <section className="modal-container">
       <div className="background" onClick={close}></div>
@@ -11,7 +20,7 @@ export default function FormModal({ name, close }) {
           <h1>Contactez Moi {name}</h1>
           
         </div>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <div className="form-input">
             <label htmlFor="firstName" tabIndex={0}>
               Prénom
@@ -36,7 +45,7 @@ export default function FormModal({ name, close }) {
             </label>
             <textarea id="message" name="message" />
           </div>
-          <Button name="Envoyer" />
+          <Button name="Envoyer" type="submit" />
         </form>
         <button id="close-modal" onClick={close} aria-label="Fermer le formulaire de contact">
             <IoMdClose className="close-modal" size={64} />

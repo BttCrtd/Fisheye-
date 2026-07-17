@@ -2,21 +2,19 @@ import "@/styles/photographerPage.css";
 import { getPhotographer, getAllMediasForPhotographer, } from "@/app/lib/prisma-db";
 import Header from "@/components/Header/Header";
 import PhotographerHeader from "@/components/PhotographerHeader/PhotographerHeader";
-
+import notFound from "@/app/not-found";
 import { FaHeart } from "react-icons/fa";
 import Gallery from "@/components/Gallery/Gallery";
 
 export default async function Page({ params }) {
   const { id } = await params;
   const photographer = await getPhotographer(id);
-  const medias = await getAllMediasForPhotographer(id);
 
-  const mediaList = medias.map((media) => ({
-    id: media.id,
-    title: media.title,
-    image: media.image,
-    video: media.video,
-  }));
+  if (!photographer) {
+    return notFound();
+  }
+
+  const medias = await getAllMediasForPhotographer(id);
 
   const totalLikes = medias.reduce((count, media) => count + media.likes, 0);
   return (

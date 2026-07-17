@@ -35,7 +35,7 @@ export default function PhotographerHeader({ photographer }) {
         src={`/assets/${photographer.portrait}`}
         width={200}
         height={200}
-        alt={``}
+        alt={`Photo de profile de ${photographer.name}`}
         className="profile-img"
         tabIndex={0}
       />
